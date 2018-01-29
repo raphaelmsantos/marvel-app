@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, OnInit } from '@angular/core';
 import { MarvelService } from './marvel.service';
 import { Comic } from './models/comic';
-import { PageEvent } from '@angular/material';
+import { PageEvent, MatDialog, MatDialogRef } from '@angular/material';
+import { DetailsComponent } from './details.component';
+import { ComicDataSource } from './comic-datasource';
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +21,10 @@ export class AppComponent implements OnInit {
   private pageSize:number = 20;
   private length:number;
 
+  private dataSource: ComicDataSource;
+  private displayedColumns = ['id','title','details'];
 
-  constructor(private marvelService: MarvelService) {
+  constructor(private marvelService: MarvelService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -33,11 +38,23 @@ export class AppComponent implements OnInit {
     }
 
     this.marvelService.getComics(this.offset, this.pageSize).subscribe(
-      x => {
+      x => {        
         this.comics = x.data.results;
         this.pageSize = x.data.limit;
         this.length = x.data.total;        
+        this.dataSource = new ComicDataSource(this.comics);
       }
     )
-  }  
+  }
+
+  openDetails(comic: Comic){
+    let dialogRef = this.dialog.open(DetailsComponent, {
+      height: '100%',
+      width: '600px',
+      data: { comic:  comic}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {      
+    });
+  }
 }

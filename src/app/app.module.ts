@@ -1,17 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule, MatCardModule, MatGridListModule, MatButtonModule, MatPaginatorModule} from '@angular/material';
+import {
+  MatToolbarModule, 
+  MatCardModule, 
+  MatGridListModule, 
+  MatButtonModule, 
+  MatPaginatorModule ,
+    MatDialogModule ,
+    MatTableModule,
+    MatIconModule
+ 
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MarvelService } from './marvel.service';
 import { MarvelInterceptor } from './marvel.interceptor';
-
+import { DetailsComponent } from './details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +32,14 @@ import { MarvelInterceptor } from './marvel.interceptor';
     MatCardModule,
     MatGridListModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    MatTableModule,
+    MatIconModule
+    
+  ],
+  entryComponents: [
+    DetailsComponent
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
