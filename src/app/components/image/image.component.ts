@@ -1,11 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { MarvelService } from './marvel.service';
 import { PageEvent, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Comic } from './models/comic';
+import { Comic } from '../../models/comic';
+import { MarvelService } from '../../services/marvel.service';
+
 
 @Component({
-    selector: 'image-root',
+    selector: 'app-image',
     templateUrl: './image.component.html'    
 })
 export class ImageComponent {

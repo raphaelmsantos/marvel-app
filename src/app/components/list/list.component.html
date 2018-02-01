@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+    Marvel App
+  </mat-toolbar>
+  <mat-card>
+    <mat-card-title>Comic list</mat-card-title>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-paginator [length]="length" (page)="getComics($event)" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]">
+          </mat-paginator>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="example-container mat-elevation-z8">
+            <mat-table [dataSource]="dataSource">
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                <mat-cell *matCellDef="let comic"> {{comic.id}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="digitalId">
+                <mat-header-cell *matHeaderCellDef> Digital Id </mat-header-cell>
+                <mat-cell *matCellDef="let comic"> {{comic.digitalId}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+                <mat-cell *matCellDef="let comic"> {{comic.title}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
+                <mat-cell *matCellDef="let comic">
+                  <button mat-raised-button color="primary" (click)="openDetails(comic)">
+                    Details
+                  </button>
+                </mat-cell>
+              </ng-container>
+  
+  
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+  
+          </div>
+        </div>
+      </div>
+   
+    </mat-card-content>
+  </mat-card>
+  <app-loading *ngIf="isLoading"></app-loading>

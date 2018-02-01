@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Result } from './models/result';
-import { environment } from '../environments/environment.prod';
-import { Comic } from './models/comic';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
+import { Result } from '../models/result';
 
 @Injectable()
 export class MarvelService {

@@ -9,21 +9,27 @@ import {
   MatPaginatorModule ,
     MatDialogModule ,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
  
 } from '@angular/material';
 
-import { AppComponent } from './app.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MarvelService } from './marvel.service';
-import { MarvelInterceptor } from './marvel.interceptor';
 
-import { ImageComponent } from './image.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { ListComponent } from './components/list/list.component';
+
+import { MarvelInterceptor } from './util/marvel.interceptor';
+import { MarvelService } from './services/marvel.service';
+import { ImageComponent } from './components/image/image.component';
+import { NotificationService } from './services/notification.service';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ImageComponent
+    ListComponent,
+    ImageComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,8 @@ import { ImageComponent } from './image.component';
     MatPaginatorModule,
     MatDialogModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
     
   ],
   entryComponents: [
@@ -46,7 +53,7 @@ import { ImageComponent } from './image.component';
     provide: HTTP_INTERCEPTORS,
     useClass: MarvelInterceptor,
     multi: true
-  }, MarvelService],
-  bootstrap: [AppComponent]
+  }, MarvelService, NotificationService],
+  bootstrap: [ListComponent]
 })
 export class AppModule { }
