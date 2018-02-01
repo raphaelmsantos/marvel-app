@@ -6,7 +6,7 @@
   <mat-card-content>
     <div class="row">
       <div class="col">
-        <mat-paginator [length]="length" (page)="pageEvent = getComics($event)" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]">
+        <mat-paginator [length]="length" (page)="getComics($event)" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]">
         </mat-paginator>
       </div>
     </div>

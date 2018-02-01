@@ -5,16 +5,15 @@ import { PageEvent, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Comic } from './models/comic';
 
 @Component({
-    selector: 'details-root',
-    templateUrl: './details.component.html',
-    styleUrls: ['./details.component.scss']
+    selector: 'image-root',
+    templateUrl: './image.component.html'    
 })
-export class DetailsComponent {
+export class ImageComponent {
 
-    private comic: Comic = new Comic();
+    comic: Comic = new Comic();
 
     constructor(
-        public dialogRef: MatDialogRef<DetailsComponent>,
+        public dialogRef: MatDialogRef<ImageComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private marvelService: MarvelService
     ) {

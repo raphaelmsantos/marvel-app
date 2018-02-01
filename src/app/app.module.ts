@@ -17,12 +17,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MarvelService } from './marvel.service';
 import { MarvelInterceptor } from './marvel.interceptor';
-import { DetailsComponent } from './details.component';
+
+import { ImageComponent } from './image.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DetailsComponent
+    ImageComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,7 @@ import { DetailsComponent } from './details.component';
     
   ],
   entryComponents: [
-    DetailsComponent
+    ImageComponent
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
